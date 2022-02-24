@@ -1,0 +1,12 @@
+pages:
+  stage: deploy
+  script:
+  - mkdir .public
+  - test -d img && cp -r img .public
+  - cp Praesentation_differentialligninger.html .public/index.html
+  - mv .public public
+  artifacts:
+    paths:
+    - public
+  only:
+  - main

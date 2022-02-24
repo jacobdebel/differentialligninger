@@ -1,0 +1,90 @@
+#+title: Bevis for separation af de variable til løsning af differentialligninger
+#+subtitle: 
+#+author: Matematik A
+#+date: Vibenshus Gymnasium
+#+latex_class: article
+#+latex_class_options: [a4paper, 10pt]
+#+language: da
+#+latex_header: \usepackage[danish]{babel}
+#+latex_header: \usepackage{mathtools}
+#+latex_header: \usepackage[left=1.0cm,right=1.0cm,top=0.0cm,bottom=1.5cm]{geometry}
+#+latex_header: \hypersetup{colorlinks, linkcolor=black, urlcolor=blue}
+#+latex_header_extra: \setlength{\parindent}{0em}
+#+latex_header_extra: \parskip 1.5ex
+#+options: ^:{} tags:nil toc:nil todo:nil num:nil timestamp:nil
+
+Dette dokument er et bevis for og et regneeksempel på brugen af separation af variable i forbindelse med løsning af 1. ordens ordinære differentialligninger. Venstre side viser det generelle bevis, mens højre side viser et eksempel.
+
+#+begin_export latex
+\fbox{
+\begin{minipage}{0.48\textwidth}
+Lad os antage, at vi har en 1. ordens ordinær differentialligning på formen:
+
+$$\frac{d y}{dx} = g(x) \cdot h(y)\,.$$
+
+Denne omarrangeres til
+
+$$\frac{1}{h(y)} \cdot \frac{d y}{dx} = g(x)\,.$$
+
+Nu integreres der på begge sider med hensyn til $x$
+
+\begin{equation}
+    \int \frac{1}{h(y(x))} \cdot \frac{d y(x)}{dx} \,dx = \int g(x)\,dx \,.  \label{foerste}
+\end{equation}
+
+Nu betragter vi integranden på venstre side, som hedder $\frac{1}{h(y(x))} \cdot \frac{d y(x)}{dx}$.
+Lad os antage at $H(y(x))$ er stamfunktion til $\frac{1}{h(y(x))}$. Da gælder det fra kædereglen at
+\begin{equation}
+    \begin{split}
+    \frac{d H(y(x))}{dx} &= \frac{d H(y(x))}{d y(x)} \cdot \frac{d y(x)}{dx}\\
+                         &= \frac{1}{h(y(x))}\cdot \frac{d y(x)}{dx} \label{anden}
+    \end{split}
+\end{equation}                         
+Højre side af ligning \eqref{anden} er da lig integranden i \eqref{foerste}, så venstre side kan indsættes i stedet.
+
+    $$\int \frac{1}{h(y(x))} \cdot \frac{d y(x)}{dx} \,dx = \int \frac{d H(y(x))}{dx} \,dx\,.$$
+
+    Vi ved alle, at integration og differentiation ophæver hinanden således at
+
+    $$\int \frac{ d H(y(x))}{dx} \, dx = H(y(x))\,.$$
+
+    Nu kan ligning \eqref{foerste} skrives som
+
+    $$H(y(x)) = \int \frac{1}{h(y(x))} \, dy(x) = \int g(x) \, dx \,.$$
+    
+    Alt dette kan også sammenfattes til
+\begin{align*}
+    \frac{d y(x)}{dx} &= g(x) \cdot h(y(x)) \\
+    &\text{kan løses vha.} \\
+    \int \frac{1}{h(y)} \, dy &= \int g(x) \, dx
+\end{align*}
+
+
+\end{minipage}
+} \fbox{
+    \begin{minipage}{0.48\textwidth}
+Lad os antage, at vi har en 1. ordens ordinær differentialligning:
+
+$$\frac{d y}{dx} = y^2\cdot 2 x\,.$$
+
+Denne omarrangeres til
+
+$$\frac{1}{y^2} \cdot \frac{d y}{dx} = 2x\,.$$
+
+Nu integreres der på begge sider med hensyn til $x$
+
+\begin{align*}
+    \int \frac{1}{y^2} \cdot \frac{d y}{dx} \,dx &= \int 2x\,dx \to \\
+    \int \frac{1}{y^2} \ dy &= \int 2x \, dx
+\end{align*}
+Hver side integreres for sig:
+\begin{align*}
+\int \frac{1}{y^2} \ dy &= \int 2x \, dx \\
+    \frac{y^{-1}}{-1} +k_1 &= \frac{2 x^2}{2} + k_2 \to \\
+    \frac{1}{y} &= -x^2 - k_2 + k_1 \to \\
+    y = y(x) &=- \frac{1}{x^2 + k_3} \, \text{, hvor }\, k_3= k_2 -k_1
+\end{align*}
+\vfill
+\end{minipage}
+}
+#+end_export
